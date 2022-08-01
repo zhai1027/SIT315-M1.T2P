@@ -1,0 +1,28 @@
+//References:
+//https://create.arduino.cc/projecthub/biharilifehacker/arduino-with-pir-motion-sensor-fd540a
+//https://create.arduino.cc/projecthub/rowan07/make-a-simple-led-circuit-ce8308
+//https://www.youtube.com/watch?v=J61_PKyWjxU (Youtube video)
+
+//Pins
+const uint8_t PIR_SENSOR = 2;
+const uint8_t LED = A0;
+
+//Globals
+uint8_t PIR_status = LOW;
+
+void setup() {
+pinMode(LED, OUTPUT);
+pinMode(PIR_SENSOR, INPUT);
+  
+attachInterrupt(0, PIN_INTERRUPT, CHANGE);
+Serial.begin(9600);
+}
+
+void loop(){
+  //delay(500);
+}
+
+void PIN_INTERRUPT(){
+	PIR_status = !PIR_status;
+  digitalWrite(LED, PIR_status);
+}
